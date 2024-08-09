@@ -6,5 +6,5 @@ public interface Calculator extends Remote {
     void pushOperation(String operator) throws RemoteException;
     int pop() throws RemoteException;
     boolean isEmpty() throws RemoteException;
-    int delayPop(int millis) throws RemoteException;
+    //int delayPop(int millis) throws RemoteException;
 }
