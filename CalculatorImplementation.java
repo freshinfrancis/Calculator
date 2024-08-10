@@ -14,12 +14,12 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
     }  
 
     @Override
-    public synchronized void pushValue(int val) throws RemoteException {
+    public void pushValue(int val) throws RemoteException {
         stack.push(val);
     }
 
     @Override
-    public synchronized void pushOperation(String operator) throws RemoteException {
+    public void pushOperation(String operator) throws RemoteException {
         List<Integer> values = new ArrayList<>();
         while (!stack.isEmpty()) {
             values.add(stack.pop());
@@ -35,13 +35,17 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
             int max = Collections.max(values);
             stack.push(max);
         } 
+        else if (operator.equals("gcd")) 
+        {
+            stack.push(gcd(values));
+        }
         else {
             throw new RemoteException("Unknown operator: " + operator);
         }
     }
 
     @Override
-    public synchronized int pop() throws RemoteException {
+    public int pop() throws RemoteException {
         if (stack.isEmpty()) {
             throw new RemoteException("Stack is empty.");
         }
@@ -49,7 +53,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
     }
 
     @Override
-    public synchronized boolean isEmpty() throws RemoteException {
+    public boolean isEmpty() throws RemoteException {
         if(stack.isEmpty())
         {
             return true;
@@ -58,6 +62,27 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
         {
             return false;
         }
+    }
+
+    private int gcd(List<Integer> values) {
+        if (values.isEmpty()) return 0;
+        int gcd = values.get(0);
+        for (int i = 1; i < values.size(); i++) {
+            gcd = gcd(gcd, values.get(i));
+        }
+        return gcd;
+    }
+
+    private int gcd(int a, int b) {
+        if (b == 0) 
+        {
+            return a;
+        }
+        else
+        {
+            return gcd(b, a % b);
+        }
+        
     }
 
 }

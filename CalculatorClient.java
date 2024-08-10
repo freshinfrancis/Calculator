@@ -18,7 +18,7 @@ public class CalculatorClient {
                         cal.pushValue(value);
                         break;
                     case "pushOperation":
-                        System.out.println("Enter operation (min, max):");
+                        System.out.println("Enter operation (min, max, gcd):");
                         String operator = scanner.nextLine();
                         cal.pushOperation(operator);
                         break;
