@@ -2,25 +2,47 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class CalculatorImplementation extends UnicastRemoteObject implements Calculator {
     
-    private Stack<Integer> stack;
+    private final Map<String, Stack<Integer>> stacks;
 
     protected CalculatorImplementation() throws RemoteException {
-        stack = new Stack<>();  
+        super();
+        stacks = new HashMap<>();  
     }  
 
-    @Override
-    public void pushValue(int val) throws RemoteException {
-        stack.push(val);
+    private Stack<Integer> getStackForClient(String clientId) {
+        Stack<Integer> stack = stacks.get(clientId);
+        if (stack == null) {
+            stack = new Stack<>();
+            stacks.put(clientId, stack);
+        }
+        return stack;
     }
 
     @Override
-    public void pushOperation(String operator) throws RemoteException {
+    public synchronized void pushValue(int val, String clientId) throws RemoteException {
+        getStackForClient(clientId).push(val);
+    }
+
+    @Override
+    public synchronized void pushOperation(String operator, String clientId) throws RemoteException {
+        
+        Stack<Integer> stack = getStackForClient(clientId);
+
+        if (stack.isEmpty()) 
+        {
+            System.out.println("Error: Stack is empty for operation " + operator);
+            return;
+        }
+
         List<Integer> values = new ArrayList<>();
+        
         while (!stack.isEmpty()) {
             values.add(stack.pop());
         }
@@ -49,7 +71,8 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
     }
 
     @Override
-    public int pop() throws RemoteException {
+    public synchronized int pop(String clientId) throws RemoteException {
+        Stack<Integer> stack = getStackForClient(clientId);
         if (stack.isEmpty()) {
             throw new RemoteException("Stack is empty.");
         }
@@ -57,8 +80,8 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
     }
 
     @Override
-    public boolean isEmpty() throws RemoteException {
-        if(stack.isEmpty())
+    public synchronized boolean isEmpty(String clientId) throws RemoteException {
+        if(getStackForClient(clientId).isEmpty())
         {
             return true;
         }

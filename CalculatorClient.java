@@ -1,10 +1,13 @@
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CalculatorClient {
     public static void main(String[] args) {
         try {
+
+            String clientId = UUID.randomUUID().toString(); 
             Calculator cal = (Calculator) Naming.lookup("rmi://localhost/CalculatorService");
             Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -15,18 +18,18 @@ public class CalculatorClient {
                     case "pushValue":
                         System.out.println("Enter value:");
                         int value = Integer.parseInt(scanner.nextLine());
-                        cal.pushValue(value);
+                        cal.pushValue(value, clientId);
                         break;
                     case "pushOperation":
                         System.out.println("Enter operation (min, max, lcm, gcd):");
                         String operator = scanner.nextLine();
-                        cal.pushOperation(operator);
+                        cal.pushOperation(operator, clientId);
                         break;
                     case "pop":
-                        System.out.println("Popped value: " + cal.pop());
+                        System.out.println("Popped value: " + cal.pop(clientId));
                         break;
                     case "isEmpty":
-                        System.out.println("Is stack empty? " + cal.isEmpty());
+                        System.out.println("Is stack empty? " + cal.isEmpty(clientId));
                         break;
                     case "exit":
                         System.out.println("Exiting...");
