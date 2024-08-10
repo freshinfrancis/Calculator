@@ -39,6 +39,10 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
         {
             stack.push(gcd(values));
         }
+        else if (operator.equals("lcm")) 
+        {
+            stack.push(lcm(values));
+        }
         else {
             throw new RemoteException("Unknown operator: " + operator);
         }
@@ -83,6 +87,19 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
             return gcd(b, a % b);
         }
         
+    }
+
+    private int lcm(List<Integer> values) {
+        if (values.isEmpty()) return 0;
+        int lcm = values.get(0);
+        for (int i = 1; i < values.size(); i++) {
+            lcm = lcm(lcm, values.get(i));
+        }
+        return lcm;
+    }
+
+    private int lcm(int a, int b) {
+        return Math.abs(a * b) / gcd(a, b);
     }
 
 }
