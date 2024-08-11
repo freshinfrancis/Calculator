@@ -87,6 +87,11 @@ Try min pushOperation and check if stack is empty after the min value is popped.
 
 <img width="626" alt="image" src="https://github.com/user-attachments/assets/7ef327a0-9da1-4851-84d9-712dd6119981">
 
+Try max pushOperation and check if stack is empty after the min value is popped.
+
+<img width="598" alt="image" src="https://github.com/user-attachments/assets/5bb3ad28-caf6-4d30-bd4b-6900077841bc">
+
+
 
 
 
