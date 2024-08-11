@@ -68,9 +68,16 @@ Compile the java files and then start rmiregistry
 
 <img width="647" alt="image" src="https://github.com/user-attachments/assets/46648109-3584-4171-bc89-1775281f286f">
 
+
 Start the Server
 
 <img width="626" alt="image" src="https://github.com/user-attachments/assets/4e718d73-4d28-4939-ab77-71c05bc35a37">
+
+
+Start the Client. Push Values on the stack, pop value from the stack and check if stack is empty
+
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/4bbc4018-73cd-4f77-b0fa-90b29a12e7ad">
+
 
 
 
