@@ -23,8 +23,29 @@ int pop()
 boolean isEmpty()
 int delayPop(int millis)
 
-# Created CalculatorServer.java, CalculatorClient.java and CalculatorImplementation.java
-RMI registry working and client and server able to communicate with each other without any error
+# CalculatorImplementation.java
+This code implements a remote calculator with client-specific stacks using Java RMI. It uses a HashMap to efficiently store stacks for each client (clientId).
+All methods are synchronized to ensure thread-safety during concurrent access. Error handling is implemented for various scenarios like empty stacks, invalid operations, and interrupted exceptions.
+
+getStackForClient: This method retrieves the existing stack for a client or creates a new one if it doesn't exist.
+
+pushValue: Pushes a new value onto the client's stack.
+
+pop: Pops the top element from the client's stack and throws an exception if the stack is empty.
+
+pushOperation: Handles various operations (min, max, gcd, lcm):
+Check for an empty stack and printing an error message (consider throwing an exception instead of just printing).
+Create a temporary ArrayList to store popped values for efficient calculation.
+Using the Collections.min and Collections.max methods for finding minimum and maximum values.
+Call the gcd and lcm helper methods for calculating greatest common divisor and least common multiple.
+Throw a RemoteException for unknown operators.
+
+isEmpty: Checks if the client's stack is empty.
+
+delayPop: This method introduces a delay before popping from the stack:
+It uses TimeUnit.MILLISECONDS.sleep to pause for the specified millis.
+It catches potential InterruptedException and throws a RemoteException with the cause for better handling in the client.
+After the delay, it calls pop to retrieve the element from the stack.
 
 
 
