@@ -47,5 +47,15 @@ It uses TimeUnit.MILLISECONDS.sleep to pause for the specified millis.
 It catches potential InterruptedException and throws a RemoteException with the cause for better handling in the client.
 After the delay, it calls pop to retrieve the element from the stack.
 
+# CalculatorServer.java
+
+Creates a Registry: Sets up a registry on port 1099 to act as a directory for remote objects.
+
+Instantiates a Calculator Implementation: Creates an object of the CalculatorImplementation class, which presumably contains the logic for calculator operations.
+
+Registers the Object: Binds the CalculatorImplementation object to the registry with the name "CalculatorService". This makes it accessible to remote clients.
+
+
+# CalculatorClient.java
 
 
