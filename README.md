@@ -79,5 +79,10 @@ Start the Client. Push Values on the stack, pop value from the stack and check i
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/4bbc4018-73cd-4f77-b0fa-90b29a12e7ad">
 
 
+delayPop Operation
+<img width="643" alt="image" src="https://github.com/user-attachments/assets/6effd497-55d8-4ac9-8b43-31b2db9d0627">
+
+
+
 
 
