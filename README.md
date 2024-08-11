@@ -48,7 +48,6 @@ It catches potential InterruptedException and throws a RemoteException with the 
 After the delay, it calls pop to retrieve the element from the stack.
 
 # CalculatorServer.java
-
 Creates a Registry: Sets up a registry on port 1099 to act as a directory for remote objects.
 
 Instantiates a Calculator Implementation: Creates an object of the CalculatorImplementation class, which presumably contains the logic for calculator operations.
@@ -57,5 +56,9 @@ Registers the Object: Binds the CalculatorImplementation object to the registry 
 
 
 # CalculatorClient.java
+This program acts as a client for the RMI calculator service.
 
+UUID.randomUUID().toString(): This generates a unique client ID using a Universally Unique Identifier. This helps differentiate client interactions with the server.
+
+Naming.lookup: Looks up the "CalculatorService" object from the RMI registry running on localhost (the same machine).
 
