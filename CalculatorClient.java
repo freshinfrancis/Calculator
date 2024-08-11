@@ -31,6 +31,11 @@ public class CalculatorClient {
                     case "isEmpty": // Calls the isEmpty method on the server object and displays if the stack is empty.
                         System.out.println("Is stack empty? " + cal.isEmpty(clientId));
                         break;
+                    case "delayPop": // Enter the milliseconds you want to delay a pop operation
+                        System.out.println("Enter delay in milliseconds:");
+                        int millis = Integer.parseInt(scanner.nextLine());
+                        System.out.println("Popped value after delay: " + cal.delayPop(millis, clientId));
+                        break;
                     case "exit": // Closes the scanner and exits the program.
                         System.out.println("Exiting...");
                         scanner.close();
