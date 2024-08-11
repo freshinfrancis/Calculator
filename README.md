@@ -100,6 +100,13 @@ Try gcd pushOperation and check if stack is empty after the min value is popped.
 <img width="542" alt="image" src="https://github.com/user-attachments/assets/d97cbbf6-0250-4b01-bd28-7c1af3a29cd4">
 
 
+Run Multiple Clients on different stacks
+
+<img width="727" alt="image" src="https://github.com/user-attachments/assets/8e57810d-85a7-4264-94ea-06cebee4cbba">
+<img width="731" alt="image" src="https://github.com/user-attachments/assets/87980924-8c00-4ea1-8ed4-bcfe7eb5814f">
+
+
+
 
 
 
