@@ -62,3 +62,13 @@ UUID.randomUUID().toString(): This generates a unique client ID using a Universa
 
 Naming.lookup: Looks up the "CalculatorService" object from the RMI registry running on localhost (the same machine).
 
+# Output
+
+Compile the java files and then start rmiregistry
+<img width="647" alt="image" src="https://github.com/user-attachments/assets/46648109-3584-4171-bc89-1775281f286f">
+
+Start the Server
+<img width="626" alt="image" src="https://github.com/user-attachments/assets/4e718d73-4d28-4939-ab77-71c05bc35a37">
+
+
+
