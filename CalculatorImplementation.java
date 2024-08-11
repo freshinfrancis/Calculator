@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 public class CalculatorImplementation extends UnicastRemoteObject implements Calculator {
     
@@ -123,6 +124,17 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
 
     private int lcm(int a, int b) {
         return Math.abs(a * b) / gcd(a, b);
+    }
+
+    @Override
+    public synchronized int delayPop(int millis, String clientId) throws RemoteException {
+        try {
+            TimeUnit.MILLISECONDS.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RemoteException("Interrupted during delay.", e);
+        }
+        return pop(clientId);
     }
 
 }

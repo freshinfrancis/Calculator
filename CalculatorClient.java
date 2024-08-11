@@ -11,7 +11,7 @@ public class CalculatorClient {
             Calculator cal = (Calculator) Naming.lookup("rmi://localhost/CalculatorService");
             Scanner scanner = new Scanner(System.in);
             while (true) {
-                System.out.println("Enter command (pushValue, pushOperation, pop, isEmpty, exit):");
+                System.out.println("Enter command (pushValue, pushOperation, pop, isEmpty, delayPop, exit):");
                 String input = scanner.nextLine();
 
                 switch (input) {
