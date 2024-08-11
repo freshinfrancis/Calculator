@@ -91,6 +91,14 @@ Try max pushOperation and check if stack is empty after the min value is popped.
 
 <img width="598" alt="image" src="https://github.com/user-attachments/assets/5bb3ad28-caf6-4d30-bd4b-6900077841bc">
 
+Try lcm pushOperation and check if stack is empty after the min value is popped.
+
+<img width="590" alt="image" src="https://github.com/user-attachments/assets/72beb738-f7f3-4554-a72c-7669317494dd">
+
+Try gcd pushOperation and check if stack is empty after the min value is popped.
+
+<img width="542" alt="image" src="https://github.com/user-attachments/assets/d97cbbf6-0250-4b01-bd28-7c1af3a29cd4">
+
 
 
 
